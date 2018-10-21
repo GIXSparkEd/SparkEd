@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="./file_files/jquery.min.js.download"></script>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    <button onclick="draw_a_stroke()">Draw a Stroke</button>
+    <script>
+        var i = 0;//stroke index
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // drawing definition:
+        // (x, y)表示绘画点point
+        // [X, Y] = [ [x1, x2, x3, ..., xn], [y1, y2, y3, ..., yn] ]表示一个由n个point连成的笔画stroke，各笔画所包含的点数n不同
+        // { [X1, Y1] , [X2, Y2] , [X3, Y3] , ... , [XN, YN] }表示由N个笔画构成的一幅画drawing
+
+        // 如：一个以(0,0)和(100,100)为对角的矩形可以表示为
+        // { [*], [*] } 两个笔画
+        // { [ [0,100], [0, 0] ], [*] } 第一笔从(0, 0)到(100, 0)
+        // { [ [0,100], [0, 0] ], [ [100, 100, 0, 0], [0, 100, 100, 0] ] } 第二笔从(100, 0)到(100, 100)到(100, 0)到(0, 0)
+
+        // 一幅画为一个drawing, 其中包含若干stroke，stroke包含数量不等的point
+        // 手第一次接触屏幕，为笔画的起始point，之后每500ms记录一个轨迹point，直到手离开屏幕，最后一个点为结束point。从起始点到终点组成了一个stroke。
+        // 每生成一个stroke，添加到drawing数组中，并且向服务器发送最新的drawing数组，获得识别结果
+        // 也就是说，用户每画新的一个笔画，程序就生成一个新的stroke；画完这一笔之后，连同之前画的所有stroke(组成drawing)一起做一次识别
+
+        // 示例：一只猫
+        // simulation drawing data
+        var sim_drawing_data = [[[73, 66, 46, 23, 12, 11, 22, 48, 58, 67, 70, 65], [11, 6, 2, 10, 23, 33, 48, 56, 54, 41, 22, 10]], [[66, 85, 71], [9, 3, 26]], [[24, 1, 2, 8], [6, 1, 10, 19]], [[64, 88, 134, 176, 180, 184, 184, 174, 111, 63, 47], [34, 29, 28, 35, 39, 58, 91, 94, 86, 71, 62]], [[64, 61, 62], [74, 83, 102]], [[83, 84, 87], [78, 102, 107]], [[157, 159, 164], [96, 108, 116]], [[175, 182], [91, 115]], [[182, 186, 198, 209, 223, 234, 251, 255], [51, 36, 29, 30, 38, 39, 20, 8]], [[157, 136, 128, 133, 139], [35, 47, 57, 35, 29]], [[104, 94, 84, 84, 89], [40, 52, 70, 30, 26]], [[111, 105, 105, 109, 121], [30, 59, 68, 72, 34]], [[159, 153, 153], [41, 54, 65]]];
+        // drawing to be drawn
+        var drawing = [];
+
+        function draw_a_stroke() {
+            if (i < sim_drawing_data.length) {
+                // draw one stroke from simulation drawing data
+                for (var j = 0; j < sim_drawing_data[i][0].length - 1; j++) {
+                    // j is the index of points in one stroke
+                    ctx.moveTo(sim_drawing_data[i][0][j], sim_drawing_data[i][1][j]);
+                    ctx.lineTo(sim_drawing_data[i][0][j + 1], sim_drawing_data[i][1][j + 1]);
+                    ctx.stroke();
+                }
+                // push new stroke into drawing for updating
+                drawing.push(sim_drawing_data[i]);
+
+                // send updated drawing for recognition
+                $.ajax({
+                    url: "http://localhost:5000",
+                    // Request headers.
+                    beforeSend: function (xhrObj) {
+                        xhrObj.setRequestHeader("Content-Type", "application/json");
+                    },
+                    type: "POST",
+                    data: JSON.stringify(drawing),
+                })
+                    .done(function (result) {
+                        console.log(result);
+                    })
+
+                //next stroke
+                i++;
+            }
+            else
+                alert("complete!")
+        }
+    </script>
+</body>
+</html>
