@@ -1,0 +1,37 @@
+{
+	"skins": {
+		"eui.Button": "resource/comp/eui_skins/ButtonSkin.exml",
+		"eui.CheckBox": "resource/comp/eui_skins/CheckBoxSkin.exml",
+		"eui.HScrollBar": "resource/comp/eui_skins/HScrollBarSkin.exml",
+		"eui.HSlider": "resource/comp/eui_skins/HSliderSkin.exml",
+		"eui.Panel": "resource/comp/eui_skins/PanelSkin.exml",
+		"eui.TextInput": "resource/comp/eui_skins/TextInputSkin.exml",
+		"eui.ProgressBar": "resource/comp/eui_skins/ProgressBarSkin.exml",
+		"eui.RadioButton": "resource/comp/eui_skins/RadioButtonSkin.exml",
+		"eui.Scroller": "resource/comp/eui_skins/ScrollerSkin.exml",
+		"eui.ToggleSwitch": "resource/comp/eui_skins/ToggleSwitchSkin.exml",
+		"eui.VScrollBar": "resource/comp/eui_skins/VScrollBarSkin.exml",
+		"eui.VSlider": "resource/comp/eui_skins/VSliderSkin.exml",
+		"eui.ItemRenderer": "resource/comp/eui_skins/ItemRendererSkin.exml"
+	},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/eui_skins/comp/ButtonSkin.exml",
+		"resource/eui_skins/comp/CheckBoxSkin.exml",
+		"resource/eui_skins/comp/HScrollBarSkin.exml",
+		"resource/eui_skins/comp/HSliderSkin.exml",
+		"resource/eui_skins/comp/ItemRendererSkin.exml",
+		"resource/eui_skins/comp/PanelSkin.exml",
+		"resource/eui_skins/comp/ProgressBarSkin.exml",
+		"resource/eui_skins/comp/RadioButtonSkin.exml",
+		"resource/eui_skins/comp/ScrollerSkin.exml",
+		"resource/eui_skins/comp/TextInputSkin.exml",
+		"resource/eui_skins/comp/ToggleSwitchSkin.exml",
+		"resource/eui_skins/comp/VScrollBarSkin.exml",
+		"resource/eui_skins/comp/VSliderSkin.exml",
+		"resource/eui_skins/main/BoardViewSkin.exml",
+		"resource/eui_skins/main/LoadingSkin.exml",
+		"resource/eui_skins/main/MenuView.exml"
+	],
+	"path": "resource/default.thm.json"
+}

@@ -1,0 +1,169 @@
+{
+	"groups": [
+		{
+			"keys": "description_json,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,main_bg_png",
+			"name": "preload"
+		},
+		{
+			"keys": "zhaomu_tex_png,zhaomu_ske_json,zhaomu_tex_json,CJ3_ske_json,CJ3_tex_json,CJ3_tex_png",
+			"name": "db"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "animation/zhaomu_tex.png",
+			"type": "image",
+			"name": "zhaomu_tex_png"
+		},
+		{
+			"url": "animation/zhaomu_ske.json",
+			"type": "json",
+			"name": "zhaomu_ske_json"
+		},
+		{
+			"url": "animation/zhaomu_tex.json",
+			"type": "json",
+			"name": "zhaomu_tex_json"
+		},
+		{
+			"url": "animation/CJ3_ske.json",
+			"type": "json",
+			"name": "CJ3_ske_json"
+		},
+		{
+			"url": "animation/CJ3_tex.json",
+			"type": "json",
+			"name": "CJ3_tex_json"
+		},
+		{
+			"url": "animation/CJ3_tex.png",
+			"type": "image",
+			"name": "CJ3_tex_png"
+		},
+		{
+			"name": "selected_png",
+			"type": "image",
+			"url": "assets/comp/ItemRenderer/selected.png"
+		},
+		{
+			"name": "border_png",
+			"type": "image",
+			"url": "assets/comp/Panel/border.png"
+		},
+		{
+			"name": "header_png",
+			"type": "image",
+			"url": "assets/comp/Panel/header.png"
+		},
+		{
+			"name": "thumb_pb_png",
+			"type": "image",
+			"url": "assets/comp/ProgressBar/thumb_pb.png"
+		},
+		{
+			"name": "track_pb_png",
+			"type": "image",
+			"url": "assets/comp/ProgressBar/track_pb.png"
+		},
+		{
+			"name": "radiobutton_select_disabled_png",
+			"type": "image",
+			"url": "assets/comp/RadioButton/radiobutton_select_disabled.png"
+		},
+		{
+			"name": "radiobutton_select_down_png",
+			"type": "image",
+			"url": "assets/comp/RadioButton/radiobutton_select_down.png"
+		},
+		{
+			"name": "radiobutton_select_up_png",
+			"type": "image",
+			"url": "assets/comp/RadioButton/radiobutton_select_up.png"
+		},
+		{
+			"name": "radiobutton_unselect_png",
+			"type": "image",
+			"url": "assets/comp/RadioButton/radiobutton_unselect.png"
+		},
+		{
+			"name": "roundthumb_png",
+			"type": "image",
+			"url": "assets/comp/ScrollBar/roundthumb.png"
+		},
+		{
+			"name": "track_sb_png",
+			"type": "image",
+			"url": "assets/comp/ScrollBar/track_sb.png"
+		},
+		{
+			"name": "thumb_png",
+			"type": "image",
+			"url": "assets/comp/Slider/thumb.png"
+		},
+		{
+			"name": "track_png",
+			"type": "image",
+			"url": "assets/comp/Slider/track.png"
+		},
+		{
+			"name": "tracklight_png",
+			"type": "image",
+			"url": "assets/comp/Slider/tracklight.png"
+		},
+		{
+			"name": "handle_png",
+			"type": "image",
+			"url": "assets/comp/ToggleSwitch/handle.png"
+		},
+		{
+			"name": "off_png",
+			"type": "image",
+			"url": "assets/comp/ToggleSwitch/off.png"
+		},
+		{
+			"name": "on_png",
+			"type": "image",
+			"url": "assets/comp/ToggleSwitch/on.png"
+		},
+		{
+			"name": "button_down_png",
+			"type": "image",
+			"url": "assets/comp/Button/button_down.png"
+		},
+		{
+			"name": "button_up_png",
+			"type": "image",
+			"url": "assets/comp/Button/button_up.png"
+		},
+		{
+			"name": "checkbox_select_disabled_png",
+			"type": "image",
+			"url": "assets/comp/CheckBox/checkbox_select_disabled.png"
+		},
+		{
+			"name": "checkbox_select_down_png",
+			"type": "image",
+			"url": "assets/comp/CheckBox/checkbox_select_down.png"
+		},
+		{
+			"name": "checkbox_select_up_png",
+			"type": "image",
+			"url": "assets/comp/CheckBox/checkbox_select_up.png"
+		},
+		{
+			"name": "checkbox_unselect_png",
+			"type": "image",
+			"url": "assets/comp/CheckBox/checkbox_unselect.png"
+		},
+		{
+			"name": "main_bg_png",
+			"type": "image",
+			"url": "assets/main/main_bg.png"
+		}
+	]
+}
