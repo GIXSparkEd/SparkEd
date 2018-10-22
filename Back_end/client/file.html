@@ -1,0 +1,117 @@
+
+<!-- saved from url=(0047)file:///D:/z/Documents/SparkEd/client/file.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Analyze Sample</title>
+    <script src="./file_files/jquery.min.js.download"></script>
+</head>
+<body style="zoom: 1;">
+
+    <script type="text/javascript">
+        var arrayBuffer = "";
+        var dataUrl = "";
+        function selectImg(file){
+
+            var reader = new FileReader();
+            reader.onload = function() {
+
+                arrayBuffer = this.result,
+                console.log(arrayBuffer);
+            };
+            reader.readAsArrayBuffer(file.files[0]);
+
+            var reader1 = new FileReader();
+            reader1.onload = function () {
+
+                dataUrl = this.result,
+                console.log(dataUrl);
+            };
+            reader1.readAsDataURL(file.files[0]);
+        };
+
+    function processImage() {
+        // **********************************************
+        // *** Update or verify the following values. ***
+        // **********************************************
+
+        // Replace <Subscription Key> with your valid subscription key.
+        var subscriptionKey = "5b433d649e10463b958bcc37911e88df";
+
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
+        //
+        // Free trial subscription keys are generated in the West Central US region.
+        // If you use a free trial subscription key, you shouldn't need to change
+        // this region.
+        var uriBase =
+            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
+
+        // Request parameters.
+        var params = {
+            "visualFeatures": "Tags",
+            "details": "",
+            "language": "en",
+        };
+
+
+        document.querySelector("#sourceImage").src = dataUrl;
+
+        // Make the REST API call.
+        $.ajax({
+            url: uriBase + "?" + $.param(params),
+
+            // Request headers.
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
+                xhrObj.setRequestHeader(
+                    "Ocp-Apim-Subscription-Key", subscriptionKey);
+            },
+
+            type: "POST",
+
+            processData: false,
+            // Request body.
+            data: arrayBuffer,
+        })
+
+        .done(function(data) {
+            // Show formatted JSON on webpage.
+            $("#responseTextArea").val(JSON.stringify(data, null, 2));
+        })
+
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            // Display error message.
+            var errorString = (errorThrown === "") ? "Error. " :
+                errorThrown + " (" + jqXHR.status + "): ";
+            errorString += (jqXHR.responseText === "") ? "" :
+                jQuery.parseJSON(jqXHR.responseText).message;
+            alert(errorString);
+        });
+    };
+    </script>
+
+    <h1>Analyze image:</h1>
+    Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+    <br><br>
+    Image to analyze:
+    <input type="text" name="inputImage" id="inputImage" value="http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg">
+    <button onclick="processImage();">Select image</button>
+    <input type="file" id="finputImage" onchange="selectImg(this);">
+    <br><br>
+    <div id="wrapper" style="width:1020px; display:table;">
+        <div id="jsonOutput" style="width:600px; display:table-cell;">
+            Response:
+            <br><br>
+            <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
+        </div>
+        <div id="imageDiv" style="width:420px; display:table-cell;">
+            Source image:
+            <br><br>
+            <img id="sourceImage" src="file:///D:/z/Documents/SparkEd/client/file.html">
+        </div>
+    </div>
+
+
+</body></html>
